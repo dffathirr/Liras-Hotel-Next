@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@import url("/assets/libs/bootstrap/css/bootstrap.min.css");
+@import url("/assets/css/styles.min.css");
+@import url("/assets/css/userstyles.css");
+@import url("/assets/css/mystyles.css");
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
