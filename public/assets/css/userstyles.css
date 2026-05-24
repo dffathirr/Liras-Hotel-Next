@@ -1305,3 +1305,397 @@
     height: 260px;
   }
 }
+
+/* ==========================================================
+   HALAMAN BOOKING  (/booking)
+   ========================================================== */
+
+.liras-booking {
+  padding: 5rem 0 6rem;
+  background-color: var(--liras-cream);
+  min-height: 80vh;
+}
+
+.liras-booking__grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ── Form ── */
+.liras-booking__form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.liras-booking__form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(27,45,62,0.08);
+}
+
+.liras-booking__form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1.5rem;
+}
+
+.liras-booking__form-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--liras-navy);
+  margin-bottom: 1.25rem;
+}
+
+.liras-booking__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.liras-booking__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.liras-booking__field:last-child {
+  margin-bottom: 0;
+}
+
+.liras-booking__field label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--liras-navy);
+}
+
+.liras-booking__field label span {
+  color: var(--liras-gold);
+}
+
+.liras-booking__field input,
+.liras-booking__field select,
+.liras-booking__field textarea {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--liras-navy);
+  background: var(--liras-cream);
+  border: 1px solid rgba(27,45,62,0.15);
+  border-radius: 4px;
+  padding: 0.6rem 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.liras-booking__field input:focus,
+.liras-booking__field select:focus,
+.liras-booking__field textarea:focus {
+  border-color: var(--liras-gold);
+}
+
+.liras-booking__field textarea {
+  resize: vertical;
+}
+
+.liras-booking__radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.liras-booking__radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--liras-navy);
+  cursor: pointer;
+}
+
+.liras-booking__radio input {
+  accent-color: var(--liras-gold);
+  width: auto;
+}
+
+.liras-booking__error {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  color: #c0392b;
+  background: #fdecea;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.liras-booking__submit {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.liras-booking__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Availability helpers ── */
+.liras-booking__avail-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(39,174,96,0.12);
+  color: #1e8449;
+  border-radius: 20px;
+  padding: 0.1rem 0.55rem;
+  vertical-align: middle;
+}
+
+.liras-booking__avail-badge--none {
+  background: rgba(192,57,43,0.1);
+  color: #c0392b;
+}
+
+.liras-booking__field-hint {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: var(--liras-navy);
+  opacity: 0.5;
+  padding: 0.6rem 0.85rem;
+  background: var(--liras-cream);
+  border: 1px dashed rgba(27,45,62,0.18);
+  border-radius: 4px;
+  margin: 0;
+}
+
+.liras-booking__field-hint--loading {
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.liras-booking__field-hint--loading i {
+  display: inline-block;
+  animation: liras-spin 1s linear infinite;
+}
+
+@keyframes liras-spin {
+  to { transform: rotate(360deg); }
+}
+
+.liras-booking__field-hint--unavail {
+  opacity: 1;
+  color: #c0392b;
+  background: #fdecea;
+  border-color: rgba(192,57,43,0.2);
+}
+
+/* ── Summary sidebar ── */
+.liras-booking__summary {
+  background: var(--liras-navy);
+  color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.liras-booking__summary h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--liras-gold);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.liras-booking__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.liras-booking__summary-row span {
+  opacity: 0.65;
+}
+
+.liras-booking__summary-row strong {
+  font-weight: 600;
+}
+
+.liras-booking__summary-divider {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 1rem 0;
+}
+
+.liras-booking__summary-total {
+  font-size: 1rem;
+}
+
+.liras-booking__summary-total span {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.liras-booking__summary-total strong {
+  color: var(--liras-gold);
+  font-size: 1.15rem;
+}
+
+.liras-booking__summary-empty {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  opacity: 0.5;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ── Success state ── */
+.liras-booking__success {
+  max-width: 560px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.liras-booking__success-icon {
+  font-size: 3.5rem;
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+.liras-booking__success h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--liras-navy);
+  margin-bottom: 0.5rem;
+}
+
+.liras-booking__success > p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: var(--liras-navy);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+.liras-booking__success-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: var(--liras-cream);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.liras-booking__success-detail > div {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lato', sans-serif;
+}
+
+.liras-booking__success-detail > div span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--liras-navy);
+  opacity: 0.5;
+  margin-bottom: 0.2rem;
+}
+
+.liras-booking__success-detail > div strong {
+  font-size: 0.95rem;
+  color: var(--liras-navy);
+  font-weight: 700;
+}
+
+.liras-booking__status-pending {
+  color: #e67e22;
+}
+
+/* Kembalian cell yang full-width di struk */
+.liras-booking__success-detail--full {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lato', sans-serif;
+}
+
+.liras-booking__success-detail--full span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--liras-navy);
+  opacity: 0.5;
+  margin-bottom: 0.2rem;
+}
+
+.liras-booking__kembalian-value {
+  font-size: 1rem !important;
+  color: #1e8449 !important;
+}
+
+/* ── Cash payment inline info ── */
+.liras-booking__cash-info {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: #1e8449;
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+.liras-booking__cash-info--kurang {
+  color: #c0392b;
+}
+
+.liras-booking__success-note {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: var(--liras-navy);
+  opacity: 0.55;
+  margin-bottom: 1.75rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .liras-booking__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liras-booking__summary {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 575px) {
+  .liras-booking__row {
+    grid-template-columns: 1fr;
+  }
+
+  .liras-booking__form {
+    padding: 1.5rem;
+  }
+}
