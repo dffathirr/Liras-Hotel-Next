@@ -145,7 +145,7 @@ export default function FeaturedRooms() {
             <p className="liras-rooms__desc">{display.description}</p>
 
             <div className="liras-rooms__actions">
-              <Link href={`/rooms/${room.id}`} className="liras-btn-book">
+              <Link href={`/kamar/${room.id}`} className="liras-btn-book">
                 Lihat Detail
               </Link>
               <div className="liras-rooms__nav">

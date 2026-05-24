@@ -1014,3 +1014,294 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ==========================================================
+   HALAMAN LIST KAMAR  (/kamar)
+   ========================================================== */
+
+.liras-kamar-list {
+  padding: 6rem 0;
+  background-color: var(--liras-cream);
+}
+
+.liras-kamar-list .liras-section-title {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+}
+
+.liras-kamar-list .liras-section-header {
+  max-width: 800px;
+}
+
+.liras-kamar-list__empty {
+  text-align: center;
+  color: var(--liras-navy);
+  opacity: 0.5;
+  padding: 3rem 0;
+}
+
+.liras-kamar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.liras-kamar-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.liras-kamar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.liras-kamar-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+}
+
+.liras-kamar-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.liras-kamar-card:hover .liras-kamar-card__img-wrap img {
+  transform: scale(1.05);
+}
+
+.liras-kamar-card__badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(15, 30, 45, 0.85);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.liras-kamar-card__badge span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-left: 2px;
+}
+
+.liras-kamar-card__body {
+  padding: 1.5rem;
+}
+
+.liras-kamar-card__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--liras-navy);
+  margin-bottom: 0.6rem;
+}
+
+.liras-kamar-card__meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  color: var(--liras-navy);
+  opacity: 0.6;
+  margin-bottom: 0.75rem;
+}
+
+.liras-kamar-card__meta i {
+  margin-right: 0.25rem;
+}
+
+.liras-kamar-card__desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--liras-navy);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================================
+   HALAMAN DETAIL KAMAR  (/kamar/[id])
+   ========================================================== */
+
+.liras-kamar-detail {
+  padding: 4rem 0 6rem;
+  background-color: var(--liras-cream);
+  min-height: 70vh;
+}
+
+.liras-kamar-detail__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: var(--liras-navy);
+  opacity: 0.6;
+  margin-bottom: 2.5rem;
+}
+
+.liras-kamar-detail__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.liras-kamar-detail__breadcrumb a:hover {
+  color: var(--liras-gold);
+  opacity: 1;
+}
+
+.liras-kamar-detail__breadcrumb span:last-child {
+  color: var(--liras-navy);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.liras-kamar-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.liras-kamar-detail__img-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.liras-kamar-detail__img-wrap img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.liras-kamar-detail__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--liras-navy);
+  margin-bottom: 1.5rem;
+}
+
+.liras-kamar-detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(27, 45, 62, 0.1);
+}
+
+.liras-kamar-detail__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.liras-kamar-detail__meta-item > i {
+  font-size: 1.1rem;
+  color: var(--liras-gold);
+  width: 20px;
+  text-align: center;
+}
+
+.liras-kamar-detail__meta-item > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.liras-kamar-detail__meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--liras-navy);
+  opacity: 0.5;
+}
+
+.liras-kamar-detail__meta-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--liras-navy);
+}
+
+.liras-kamar-detail__desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: var(--liras-navy);
+  opacity: 0.75;
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
+
+.liras-kamar-detail__price {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.liras-kamar-detail__price-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--liras-navy);
+  opacity: 0.5;
+}
+
+.liras-kamar-detail__price-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--liras-gold);
+}
+
+.liras-kamar-detail__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.liras-kamar-detail__back {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  color: var(--liras-navy);
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.liras-kamar-detail__back:hover {
+  opacity: 1;
+  color: var(--liras-gold);
+}
+
+/* Responsive kamar pages */
+@media (max-width: 767px) {
+  .liras-kamar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liras-kamar-detail__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liras-kamar-detail__img-wrap img {
+    height: 260px;
+  }
+}
