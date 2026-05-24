@@ -1308,6 +1308,110 @@
 }
 
 /* ==========================================================
+   HALAMAN ABOUT  (/about)
+   ========================================================== */
+
+.liras-about-page__header {
+  background-color: var(--liras-navy);
+  text-align: center;
+  padding: 5rem 0 4rem;
+}
+
+.liras-about-page__header .liras-section-eyebrow {
+  color: var(--liras-gold);
+  justify-content: center;
+}
+
+.liras-about-page__header .liras-section-eyebrow::before,
+.liras-about-page__header .liras-section-eyebrow::after {
+  background: var(--liras-gold);
+}
+
+.liras-about-page__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0.5rem 0 1rem;
+}
+
+.liras-about-page__lead {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.liras-about-page__story {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+/* ── Values ── */
+.liras-about-page__values {
+  padding: 5rem 0 6rem;
+  background-color: var(--liras-cream);
+}
+
+.liras-about-page__values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.liras-about-page__value-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.liras-about-page__value-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--liras-gold);
+  margin-bottom: 1.1rem;
+}
+
+.liras-about-page__value-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--liras-navy);
+  margin-bottom: 0.6rem;
+}
+
+.liras-about-page__value-card p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--liras-navy);
+  opacity: 0.7;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .liras-about-page__values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .liras-about-page__values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================
    HALAMAN BOOKING  (/booking)
    ========================================================== */
 
