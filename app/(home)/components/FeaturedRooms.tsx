@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { formatPrice } from "@/helpers/site";
 
 type Room = {
   id: number;
@@ -36,14 +37,6 @@ const displayData = [
     description: "Pilihan terbaik kami dengan dua kamar tidur, jacuzzi, dan layanan butler pribadi 24 jam penuh.",
   },
 ];
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    maximumFractionDigits: 0,
-  }).format(price);
-}
 
 export default function FeaturedRooms() {
   const [rooms, setRooms] = useState<Room[]>([]);

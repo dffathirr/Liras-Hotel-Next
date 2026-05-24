@@ -1,5 +1,6 @@
 import { query } from '@/config/database';
 import Link from 'next/link';
+import { formatPrice } from '@/helpers/site';
 
 type Room = { id: number; jenis_bed: string; harga: number; max_tamu: number };
 
@@ -29,14 +30,6 @@ const displayData: Record<number, { name: string; size: string; image: string; d
     description: 'Pilihan terbaik kami dengan dua kamar tidur, jacuzzi, dan layanan butler pribadi 24 jam penuh.',
   },
 };
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    maximumFractionDigits: 0,
-  }).format(price);
-}
 
 export default async function KamarPage() {
   let rooms: Room[] = [];

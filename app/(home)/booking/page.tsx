@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { formatPrice, formatDate } from "@/helpers/site";
 
 type Kamar = {
   id: number;
@@ -25,23 +26,6 @@ type FormState = {
   metode_pembayaran: string;
   uang_bayar: string;
 };
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    maximumFractionDigits: 0,
-  }).format(price);
-}
-
-function formatDate(iso: string) {
-  if (!iso) return "-";
-  return new Date(iso).toLocaleDateString("id-ID", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
 
 export default function BookingPage() {
   const searchParams = useSearchParams();
