@@ -17,6 +17,7 @@ type BookingRow = {
   checkout: string;
   jml_tamu: number;
   harga: number;
+  jenis_pembayaran: string;
 };
 
 export async function GET() {
@@ -27,11 +28,15 @@ export async function GET() {
         c.nama  AS customer_nama,
         c.no_telp AS customer_no_telp,
         bd.kamar_id, bd.checkin, bd.checkout, bd.jml_tamu, bd.harga,
-        k.no_kamar, k.jenis_bed
+        k.no_kamar, k.jenis_bed,
+        p.jenis_pembayaran
       FROM booking b
       JOIN customer      c  ON c.id  = b.customer_id
       JOIN booking_detail bd ON bd.booking_id = b.id
       JOIN kamar         k  ON k.id  = bd.kamar_id
+      LEFT JOIN pembayaran p ON p.id = (
+        SELECT MIN(id) FROM pembayaran WHERE booking_id = b.id
+      )
       ORDER BY b.created_at DESC
     `);
     return NextResponse.json(rows);

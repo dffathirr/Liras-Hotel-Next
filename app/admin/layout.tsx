@@ -1,32 +1,78 @@
-import type { ReactNode } from 'react';
-// import Sidebar from '@/components/admin/layout/Sidebar';
-// import Header from '@/components/admin/layout/Header';
+'use client';
 
-/**
- * ADMIN LAYOUT — berlaku untuk semua route: /admin, /admin/rooms, /admin/bookings, dll
- *
- * ┌──────────┬──────────────────────────────┐
- * │          │  HEADER                      │  ← hamburger, search, notif, user menu
- * │ SIDEBAR  ├──────────────────────────────┤
- * │          │                              │
- * │ - Dashboard        {children}           │
- * │ - Rooms            ← konten tiap page   │
- * │ - Bookings                              │
- * │ - Guests                                │
- * │ - Reports                               │
- * │ - Settings                              │
- * │          │                              │
- * └──────────┴──────────────────────────────┘
- */
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
+
+const NAV_ITEMS = [
+  { href: '/admin/dashboard', icon: 'fa-chart-bar', label: 'Dashboard' },
+  { href: '/admin/booking',   icon: 'fa-calendar-check', label: 'Booking' },
+];
+
 export default function AdminLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <div className="app-container">
-      {/* <Sidebar /> */}
-      <div className="main-content">
-        {/* <Header /> */}
-        <div className="page-content">
-          {children}
+
+      {/* ── SIDEBAR ── */}
+      <aside className="app-sidebar sticky" id="sidebar">
+        <div className="main-sidebar-header d-flex align-items-center px-3 py-3">
+          <Link href="/admin/dashboard" style={{ textDecoration: 'none' }}>
+            <span className="fw-bold fs-5" style={{ color: 'var(--primary-color)' }}>
+              🏨 Liras Admin
+            </span>
+          </Link>
         </div>
+
+        <div className="main-sidebar" id="sidebar-scroll">
+          <nav className="main-menu-inner">
+            <ul className="main-menu-list list-unstyled">
+              <li className="slide__category">
+                <span className="category-name px-3 text-uppercase text-muted" style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}>
+                  Menu
+                </span>
+              </li>
+
+              {NAV_ITEMS.map(({ href, icon, label }) => {
+                const isActive = pathname === href || (href !== '/admin/dashboard' && pathname.startsWith(href));
+                return (
+                  <li key={href} className="slide">
+                    <Link href={href} className={`side-menu__item${isActive ? ' active' : ''}`}>
+                      <i className={`fas ${icon} side-menu__icon`} />
+                      <span className="side-menu__label">{label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      {/* ── MAIN CONTENT ── */}
+      <div className="app-content">
+
+        {/* Header */}
+        <header className="app-header">
+          <div className="main-header-container container-fluid h-100 d-flex align-items-center justify-content-between">
+            <span className="fw-semibold text-muted" style={{ fontSize: '0.9rem' }}>
+              Panel Manajemen — Liras Hotel
+            </span>
+            <Link href="/" className="btn btn-sm btn-light border">
+              <i className="fas fa-home me-1" />
+              Ke Website
+            </Link>
+          </div>
+        </header>
+
+        {/* Page body */}
+        <div className="main-content">
+          <div className="container-xl py-4">
+            {children}
+          </div>
+        </div>
+
       </div>
     </div>
   );
