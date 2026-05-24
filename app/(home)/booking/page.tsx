@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatPrice, formatDate } from "@/helpers/site";
@@ -27,7 +27,7 @@ type FormState = {
   uang_bayar: string;
 };
 
-export default function BookingPage() {
+function BookingPageInner() {
   const searchParams = useSearchParams();
 
   const [kamarList, setKamarList] = useState<Kamar[]>([]);
@@ -588,5 +588,13 @@ export default function BookingPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense>
+      <BookingPageInner />
+    </Suspense>
   );
 }
