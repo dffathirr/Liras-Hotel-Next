@@ -6,36 +6,19 @@ import { formatPrice } from "@/helpers/site";
 
 type Room = {
   id: number;
+  nama: string;
   jenis_bed: string;
+  size: string;
   harga: number;
   max_tamu: number;
+  description: string;
 };
 
-const displayData = [
-  {
-    name: "Kamar Deluxe",
-    size: "32 m²",
-    image: "/assets/images/kamar1.jpg",
-    description: "Kamar nyaman dengan sentuhan modern dan pemandangan kota yang indah. Dilengkapi fasilitas lengkap untuk menunjang istirahat Anda.",
-  },
-  {
-    name: "Kamar Superior",
-    size: "40 m²",
-    image: "/assets/images/kamar2.jpg",
-    description: "Ruang yang lebih luas dengan balkon pribadi dan bathtub premium. Cocok untuk pasangan yang menginginkan suasana romantis.",
-  },
-  {
-    name: "Kamar Suite",
-    size: "65 m²",
-    image: "/assets/images/kamar3.jpg",
-    description: "Suite mewah dengan ruang tamu terpisah dan pemandangan panoramik kota. Pengalaman menginap yang sesungguhnya.",
-  },
-  {
-    name: "Suite Presiden",
-    size: "120 m²",
-    image: "/assets/images/kamar4.jpg",
-    description: "Pilihan terbaik kami dengan dua kamar tidur, jacuzzi, dan layanan butler pribadi 24 jam penuh.",
-  },
+const fixImage = [
+  "/assets/images/kamar1.jpg",
+  "/assets/images/kamar2.jpg",
+  "/assets/images/kamar3.jpg",
+  "/assets/images/kamar4.jpg",
 ];
 
 export default function FeaturedRooms() {
@@ -81,7 +64,6 @@ export default function FeaturedRooms() {
   }
 
   const room = rooms[active];
-  const display = displayData[active] ?? displayData[0];
 
   return (
     <section className="liras-rooms">
@@ -100,8 +82,8 @@ export default function FeaturedRooms() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               key={room.id}
-              src={display.image}
-              alt={display.name}
+              src={fixImage[active % fixImage.length]}
+              alt={room.nama}
               className="liras-rooms__image"
             />
             <div className="liras-rooms__image-badge">
@@ -121,11 +103,11 @@ export default function FeaturedRooms() {
               </span>
             </div>
 
-            <h3 className="liras-rooms__name">{display.name}</h3>
+            <h3 className="liras-rooms__name">{room.nama}</h3>
 
             <div className="liras-rooms__meta">
               <span>
-                <i className="ri-expand-diagonal-line" /> {display.size}
+                <i className="ri-expand-diagonal-line" /> {room.size}
               </span>
               <span>
                 <i className="ri-user-line" /> Maks. {room.max_tamu} Tamu
@@ -135,7 +117,7 @@ export default function FeaturedRooms() {
               </span>
             </div>
 
-            <p className="liras-rooms__desc">{display.description}</p>
+            <p className="liras-rooms__desc">{room.description}</p>
 
             <div className="liras-rooms__actions">
               <Link href={`/kamar/${room.id}`} className="liras-btn-book">
