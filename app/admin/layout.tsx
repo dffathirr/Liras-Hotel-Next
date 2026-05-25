@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 
 const NAV_ITEMS = [
@@ -11,6 +11,15 @@ const NAV_ITEMS = [
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Halaman login tidak pakai sidebar
+  if (pathname === '/admin/login') return <>{children}</>;
+
+  async function handleLogout() {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    router.push('/admin/login');
+  }
 
   return (
     <div className="app-container">
@@ -59,10 +68,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <span className="fw-semibold text-muted" style={{ fontSize: '0.9rem' }}>
               Panel Manajemen — Liras Hotel
             </span>
-            <Link href="/" className="btn btn-sm btn-light border">
-              <i className="fas fa-home me-1" />
-              Ke Website
-            </Link>
+            <div className="d-flex align-items-center gap-2">
+              <Link href="/" className="btn btn-sm btn-light border">
+                <i className="fas fa-home me-1" />
+                Ke Website
+              </Link>
+              <button onClick={handleLogout} className="btn btn-sm btn-outline-danger">
+                <i className="fas fa-sign-out-alt me-1" />
+                Keluar
+              </button>
+            </div>
           </div>
         </header>
 
