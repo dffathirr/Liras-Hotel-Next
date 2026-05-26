@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Receipt from "./components/Receipt";
+import Summary from "./components/Summary";
 import { formatPrice } from "@/helpers/site";
 
 type Kamar = {
@@ -27,6 +28,20 @@ type FormState = {
   metode_pembayaran: string;
   uang_bayar: string;
 };
+
+const paymentMethod = [
+  {
+    value: "cash",
+    label: "Tunai (Cash)",
+    icon: "ri-money-dollar-circle-line",
+  },
+  {
+    value: "debit",
+    label: "Kartu Debit",
+    icon: "ri-bank-card-line",
+  },
+  { value: "qris", label: "QRIS", icon: "ri-qr-code-line" },
+];
 
 export function PageClient() {
   const searchParams = useSearchParams();
@@ -411,19 +426,7 @@ export function PageClient() {
                   Metode <span>*</span>
                 </label>
                 <div className="liras-booking__radio-group">
-                  {[
-                    {
-                      value: "cash",
-                      label: "Tunai (Cash)",
-                      icon: "ri-money-dollar-circle-line",
-                    },
-                    {
-                      value: "debit",
-                      label: "Kartu Debit",
-                      icon: "ri-bank-card-line",
-                    },
-                    { value: "qris", label: "QRIS", icon: "ri-qr-code-line" },
-                  ].map((m) => (
+                  {paymentMethod.map((m) => (
                     <label key={m.value} className="liras-booking__radio">
                       <input
                         type="radio"
@@ -483,47 +486,11 @@ export function PageClient() {
           </form>
 
           {/* Summary */}
-          <aside className="liras-booking__summary">
-            <h3>Ringkasan Pemesanan</h3>
-            {selectedKamar ? (
-              <>
-                <div className="liras-booking__summary-row">
-                  <span>Kamar</span>
-                  <strong>
-                    {selectedKamar.jenis_bed}
-                    {selectedKamar.no_kamar
-                      ? ` — No. ${selectedKamar.no_kamar}`
-                      : ""}
-                  </strong>
-                </div>
-                <div className="liras-booking__summary-row">
-                  <span>Kapasitas</span>
-                  <strong>Maks. {selectedKamar.max_tamu} Tamu</strong>
-                </div>
-                <div className="liras-booking__summary-row">
-                  <span>Harga/malam</span>
-                  <strong>{formatPrice(selectedKamar.harga)}</strong>
-                </div>
-                {nights > 0 && (
-                  <>
-                    <div className="liras-booking__summary-row">
-                      <span>Durasi</span>
-                      <strong>{nights} malam</strong>
-                    </div>
-                    <div className="liras-booking__summary-divider" />
-                    <div className="liras-booking__summary-row liras-booking__summary-total">
-                      <span>Total Estimasi</span>
-                      <strong>{formatPrice(estimasiHarga)}</strong>
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <p className="liras-booking__summary-empty">
-                Pilih kamar untuk melihat ringkasan.
-              </p>
-            )}
-          </aside>
+          <Summary
+            selectedKamar={selectedKamar}
+            nights={nights}
+            estimasiHarga={estimasiHarga}
+          />
         </div>
       </div>
     </section>
