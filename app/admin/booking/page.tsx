@@ -223,13 +223,11 @@ export default function AdminBookingPage() {
   }
 
   return (
-    <div>
+    <div className="container py-4">
       {/* Page Header */}
       <div className="mb-4">
-        <h4 className="mb-0 fw-bold">Manajemen Booking</h4>
-        <p className="text-muted mb-0" style={{ fontSize: "0.875rem" }}>
-          Kelola status pemesanan tamu hotel
-        </p>
+        <h2>Manajemen Kamar</h2>
+        <p className="text-muted">Kelola data dan status kamar hotel</p>
       </div>
 
       {/* Main Card */}

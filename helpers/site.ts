@@ -14,3 +14,20 @@ export function formatDate(iso: string) {
     year: "numeric",
   });
 }
+
+export const formatNumber = (
+  number: string | number,
+  replaceTo: string | null = ",",
+) => {
+  let formattedNumber = new Intl.NumberFormat("id-ID", {
+    useGrouping: true,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(Number(number));
+
+  if (replaceTo) {
+    formattedNumber = formattedNumber.replace(/[,.]/g, replaceTo);
+  }
+
+  return formattedNumber;
+};

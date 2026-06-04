@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "highcharts": "^12.6.0",
+    "highcharts-react-official": "^3.2.3",
     "mysql2": "^3.22.3",
     "next": "16.2.6",
     "react": "19.2.4",

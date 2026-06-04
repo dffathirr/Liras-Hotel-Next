@@ -140,9 +140,7 @@ export default function AdminKamarPage() {
     setFormError("");
     try {
       const url =
-        modalMode === "add"
-          ? "/api/kamar"
-          : `/api/kamar/${selectedKamar!.id}`;
+        modalMode === "add" ? "/api/kamar" : `/api/kamar/${selectedKamar!.id}`;
       const method = modalMode === "add" ? "POST" : "PATCH";
       const res = await fetch(url, {
         method,
@@ -192,13 +190,11 @@ export default function AdminKamarPage() {
   const occupiedCount = kamarList.filter((k) => k.is_occupied).length;
 
   return (
-    <div>
+    <div className="container py-4">
       {/* Page Header */}
       <div className="mb-4">
-        <h4 className="mb-0 fw-bold">Manajemen Kamar</h4>
-        <p className="text-muted mb-0" style={{ fontSize: "0.875rem" }}>
-          Kelola data dan status kamar hotel
-        </p>
+        <h2>Manajemen Kamar</h2>
+        <p className="text-muted">Kelola data dan status kamar hotel</p>
       </div>
 
       {/* Main Card */}
@@ -212,11 +208,7 @@ export default function AdminKamarPage() {
           loading={loading}
           onRefresh={fetchKamar}
         />
-        <SearchButton
-          search={search}
-          onChange={setSearch}
-          onAdd={openAdd}
-        />
+        <SearchButton search={search} onChange={setSearch} onAdd={openAdd} />
         <Table
           error={error}
           loading={loading}
