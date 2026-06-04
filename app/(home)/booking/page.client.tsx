@@ -76,7 +76,7 @@ export function PageClient() {
 
   // Load semua kamar untuk opsi jenis_bed
   useEffect(() => {
-    fetch("/api/kamar")
+    fetch("/api/kamar/selected")
       .then((r) => r.json())
       .then((data: Kamar[]) => {
         setKamarList(data);

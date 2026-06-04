@@ -28,7 +28,7 @@ export default function FeaturedRooms() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/kamar")
+    fetch("/api/kamar/selected")
       .then((res) => {
         if (!res.ok) throw new Error("Gagal mengambil data kamar");
         return res.json();

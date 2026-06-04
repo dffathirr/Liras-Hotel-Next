@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 const NAV_ITEMS = [
   { href: '/admin/dashboard', icon: 'fa-chart-bar', label: 'Dashboard' },
   { href: '/admin/booking',   icon: 'fa-calendar-check', label: 'Booking' },
+  { href: '/admin/kamar',   icon: 'fa-bed', label: 'Kamar' },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
