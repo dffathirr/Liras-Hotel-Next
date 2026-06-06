@@ -5,6 +5,7 @@ import StatusBar from "./components/StatusBar";
 import SearchButton from "./components/SearchButton";
 import Table from "./components/Table";
 import { KamarModal, DeleteModal } from "./components/KamarModal";
+import Pagination from "./components/Pagination";
 
 type Kamar = {
   id: number;
@@ -52,6 +53,9 @@ export default function AdminKamarPage() {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [formError, setFormError] = useState("");
   const [saving, setSaving] = useState(false);
+
+  const PAGE_SIZE = 10;
+  const [page, setPage] = useState(1);
 
   const fetchKamar = useCallback(async () => {
     setLoading(true);
@@ -189,6 +193,12 @@ export default function AdminKamarPage() {
   const availableCount = kamarList.filter((k) => !k.is_occupied).length;
   const occupiedCount = kamarList.filter((k) => k.is_occupied).length;
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(Math.max(page, 1), totalPages);
+  const start = (safePage - 1) * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, filtered.length);
+  const paginated = filtered.slice(start, end);
+
   return (
     <div className="container py-4">
       {/* Page Header */}
@@ -201,29 +211,42 @@ export default function AdminKamarPage() {
       <div className="card border-0 shadow-sm">
         <StatusBar
           filterStatus={filterStatus}
-          onFilterChange={setFilterStatus}
           kamarLength={kamarList.length}
           availableCount={availableCount}
           occupiedCount={occupiedCount}
           loading={loading}
           onRefresh={fetchKamar}
+          onFilterChange={(val) => {
+            setFilterStatus(val);
+            setPage(1);
+          }}
         />
-        <SearchButton search={search} onChange={setSearch} onAdd={openAdd} />
+        <SearchButton
+          search={search}
+          onChange={(val) => {
+            setSearch(val);
+            setPage(1);
+          }}
+          onAdd={openAdd}
+        />
         <Table
           error={error}
           loading={loading}
-          filtered={filtered}
+          filtered={paginated}
           search={search}
           filterStatus={filterStatus}
           onEdit={openEdit}
           onDelete={openDelete}
         />
         {!loading && !error && kamarList.length > 0 && (
-          <div className="card-footer bg-transparent py-2 px-4">
-            <span className="text-muted" style={{ fontSize: "0.8rem" }}>
-              Menampilkan {filtered.length} dari {kamarList.length} kamar
-            </span>
-          </div>
+          <Pagination
+            start={start}
+            end={end}
+            filteredLength={filtered.length}
+            totalPages={totalPages}
+            safePage={safePage}
+            onPageChange={setPage}
+          />
         )}
       </div>
 
