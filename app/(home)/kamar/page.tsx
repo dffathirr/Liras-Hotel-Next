@@ -2,6 +2,8 @@ import { query } from "@/config/database";
 import Link from "next/link";
 import { formatPrice } from "@/helpers/site";
 
+export const dynamic = "force-dynamic";
+
 type Room = {
   id: number;
   nama: string;

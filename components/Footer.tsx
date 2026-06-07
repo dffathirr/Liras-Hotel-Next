@@ -1,11 +1,7 @@
 import Link from 'next/link';
 
 const quickLinks = [
-  { label: 'Kamar Kami',     href: '/rooms' },
-  { label: 'Fasilitas',      href: '/facilities' },
-  { label: 'Restoran',       href: '/dining' },
-  { label: 'Spa & Kebugaran', href: '/spa' },
-  { label: 'Acara',          href: '/events' },
+  { label: 'Kamar Kami',     href: '/kamar' },
   { label: 'Tentang Kami',   href: '/about' },
 ];
 
