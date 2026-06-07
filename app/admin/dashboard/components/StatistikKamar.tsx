@@ -1,5 +1,7 @@
 import { query } from "@/config/database";
 
+export const dynamic = "force-dynamic";
+
 interface data {
   jenis_bed: string;
   total: number;

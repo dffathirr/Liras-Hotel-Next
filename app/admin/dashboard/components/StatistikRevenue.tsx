@@ -1,6 +1,8 @@
 import { query } from "@/config/database";
 import Chart from "./Chart";
 
+export const dynamic = "force-dynamic";
+
 export default async function StatistikRevenue() {
   const data = await fetchRevenue();
 

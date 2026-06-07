@@ -1,6 +1,8 @@
 import { query } from "@/config/database";
 import { formatPrice } from "@/helpers/site";
 
+export const dynamic = "force-dynamic";
+
 export default async function Widgets() {
   const [totalKamar, totalBooking, totalCustomer, totalRevenue] =
     await Promise.all([
