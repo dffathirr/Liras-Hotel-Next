@@ -1,6 +1,8 @@
 import { query } from "@/config/database";
 import Chart from "./Chart";
 
+export const dynamic = "force-dynamic";
+
 interface status {
   status_booking: string;
   total: number;
