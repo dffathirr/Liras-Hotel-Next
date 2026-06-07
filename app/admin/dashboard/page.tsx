@@ -3,6 +3,8 @@ import StatistikKamar from "./components/StatistikKamar";
 import StatistikRevenue from "./components/StatistikRevenue";
 import Widgets from "./components/Widgets";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
   return (
     <div className="container py-4">
